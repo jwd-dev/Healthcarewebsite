@@ -6,16 +6,7 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
   const [cardsPerView, setCardsPerView] = useState(3);
 
   const doctors = [
-    {
-      id: 1,
-      name: 'Dr. Sarah Mitchell',
-      specialty: 'Cardiology',
-      experience: '15 years',
-      education: 'Harvard Medical School',
-      bio: 'Dr. Mitchell is a board-certified cardiologist with extensive experience in preventive cardiology and heart disease management.',
-      initials: 'SM',
-      color: 'from-red-500 to-pink-500'
-    },
+
     {
       id: 2,
       name: 'Dr. James Chen',
@@ -76,7 +67,7 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
               {doctors.map((doctor) => (
                 <div 
                   key={doctor.id} 
-                  className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-200 flex flex-col items-center justify-center h-full"
+                  className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-200 flex flex-col items-center justify-center h-100px"
                   style={{ width: `${100 / doctors.length}%`, flexShrink: 0, height: "100%" }}
                 >
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{doctor.name}</h3>
