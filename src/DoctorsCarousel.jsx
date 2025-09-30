@@ -63,28 +63,29 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
   const containerClass = "py-16  flex flex-col items-center justify-center h-full w-full"
 
   return (
-    <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%" }}>
-      <div className="w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden flex-1 flex flex-col">
+    <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%", background: "transparent" }}>
+      <div className="w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
 
         {/* Carousel */}
-        <div className="relative p-8 flex-1 flex flex-col">
-          <div className="overflow-hidden flex-1 flex flex-col">
-  
+        <div className="relative p-8 flex-1 flex flex-col" style={{ background: "transparent" }}>
+          <div className="overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
+            <div 
+              className="flex  gap-6 h-full"
+              style={{ background: "transparent" }}
+            >
               {doctors.map((doctor) => (
                 <div 
                   key={doctor.id} 
                   className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-200 flex flex-col items-center justify-center h-full"
                   style={{ width: `${100 / doctors.length}%`, flexShrink: 0, height: "100%" }}
                 >
-                  <div className={`w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br ${doctor.color} flex items-center justify-center text-white text-2xl font-bold shadow-lg`}>
-                    {doctor.initials}
-                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{doctor.name}</h3>
                   <p className="text-blue-600 font-semibold mb-3">{doctor.specialty}</p>
                   <p className="text-sm text-gray-500 mb-2">Experience: {doctor.experience}</p>
                   <p className="text-sm text-gray-500 mb-4 italic">{doctor.education}</p>
                 </div>
               ))}
+            </div>
           </div>
 
 
