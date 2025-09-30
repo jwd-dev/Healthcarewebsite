@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, ChevronDown, ChevronUp, Search, Heart, Award, Users, Shield } from 'lucide-react';
 
 export default function HealthBridgeWebsite() {
@@ -14,6 +14,30 @@ export default function HealthBridgeWebsite() {
     time: '',
     reason: ''
   });
+
+  // Ref to track if the widget has been loaded
+  const blandWidgetLoaded = useRef(false);
+
+  // Load the Bland AI widget if not already loaded
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !blandWidgetLoaded.current) {
+      // Check if the script is already present
+      const existingScript = document.querySelector('script[src="https://widget.bland.ai/loader.js"]');
+      if (!existingScript) {
+        // Set the global settings as in index.html
+        window.blandSettings = {
+          widget_id: "faab37cc-952e-4e63-9cbe-9925acee071e",
+        };
+        const script = document.createElement('script');
+        script.src = "https://widget.bland.ai/loader.js";
+        script.defer = true;
+        document.body.appendChild(script);
+        blandWidgetLoaded.current = true;
+      } else {
+        blandWidgetLoaded.current = true;
+      }
+    }
+  }, []);
 
   const doctors = [
     {
