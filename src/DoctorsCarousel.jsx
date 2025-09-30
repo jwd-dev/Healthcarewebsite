@@ -54,21 +54,21 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
   const containerClass = "py-16  flex flex-col items-center justify-center h-full w-full"
 
   return (
-    <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%", background: "transparent" }}>
-      <div className=" overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
+    <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%", background: "transparent", overflow: "hidden" }}>
+      <div className="flex-1 flex flex-col" style={{ background: "transparent", overflow: "hidden" }}>
 
         {/* Carousel */}
-        <div className="relative p-8 flex-1 flex flex-col" style={{ background: "transparent" }}>
-          <div className="overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
+        <div className="relative p-8 flex-1 flex flex-col" style={{ background: "transparent", overflow: "hidden" }}>
+          <div className="flex-1 flex flex-col" style={{ background: "transparent", overflow: "hidden" }}>
             <div 
-              className="flex  gap-6 h-full"
-              style={{ background: "transparent" }}
+              className="flex gap-6 h-full"
+              style={{ background: "transparent", overflow: "hidden" }}
             >
               {doctors.map((doctor) => (
                 <div 
                   key={doctor.id} 
                   className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-200 flex flex-col items-center justify-center h-100px"
-                  style={{ width: `${100 / doctors.length}%`, flexShrink: 0, height: "100%" }}
+                  style={{ width: `${100 / doctors.length}%`, flexShrink: 0, height: "100%", overflow: "hidden" }}
                 >
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{doctor.name}</h3>
                   <p className="text-blue-600 font-semibold mb-3">{doctor.specialty}</p>
@@ -78,7 +78,6 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
               ))}
             </div>
           </div>
-
 
         </div>
 
