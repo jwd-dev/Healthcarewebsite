@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthBridge Doctors Carousel - Iframe Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .doctors-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .code-example h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+
+        .code-example code {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 3px;
+            padding: 10px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .responsive-info {
+            background: #e7f3ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .responsive-info h4 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HealthBridge Doctors Carousel - Iframe Embedding Example</h1>
+        
+        <div class="iframe-container">
+            <iframe 
+                src="./doctors-carousel.html" 
+                class="doctors-iframe"
+                title="HealthBridge Doctors Carousel"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="code-example">
+            <h3>How to Embed This Carousel</h3>
+            <p>Copy and paste this iframe code into any website:</p>
+            <code>&lt;iframe 
+    src="https://yoursite.com/doctors-carousel.html" 
+    width="100%" 
+    height="600"
+    frameborder="0"
+    title="HealthBridge Doctors Carousel"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code>
+        </div>
+
+        <div class="responsive-info">
+            <h4>📱 Responsive Design Features:</h4>
+            <ul>
+                <li><strong>Desktop (1024px+):</strong> Shows 3 doctor cards at once</li>
+                <li><strong>Tablet (768px-1023px):</strong> Shows 2 doctor cards at once</li>
+                <li><strong>Mobile (below 768px):</strong> Shows 1 doctor card at once</li>
+                <li><strong>Touch Support:</strong> Swipe left/right on mobile devices</li>
+                <li><strong>Keyboard Navigation:</strong> Use arrow keys to navigate</li>
+                <li><strong>Auto-advance:</strong> Automatically advances every 5 seconds</li>
+            </ul>
+        </div>
+
+        <div class="code-example">
+            <h3>Advanced Iframe Options</h3>
+            <p>For better integration, you can customize the iframe:</p>
+            <code>&lt;!-- Responsive iframe --&gt;
+&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 50%;"&gt;
+    &lt;iframe 
+        src="https://yoursite.com/doctors-carousel.html"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        frameborder="0"
+        title="HealthBridge Doctors Carousel"
+        allowfullscreen&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- Fixed height iframe --&gt;
+&lt;iframe 
+    src="https://yoursite.com/doctors-carousel.html"
+    width="100%"
+    height="600"
+    style="border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"
+    title="HealthBridge Doctors Carousel"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code>
+        </div>
+
+        <div class="responsive-info">
+            <h4>🚀 Hosting Instructions:</h4>
+            <ol>
+                <li>Upload <code>doctors-carousel.html</code> to your web server</li>
+                <li>Make sure the file is accessible via HTTP/HTTPS</li>
+                <li>Update the iframe <code>src</code> attribute with the full URL</li>
+                <li>Test the iframe on different devices and screen sizes</li>
+                <li>Consider adding HTTPS headers for security if embedding on external sites</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
