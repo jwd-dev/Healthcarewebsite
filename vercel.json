@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/doctors-carousel",
+      "destination": "/doctors-carousel"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

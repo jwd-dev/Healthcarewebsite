@@ -1,0 +1,222 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
+
+const DoctorsCarousel = ({ isEmbedded = false }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+
+  const doctors = [
+    {
+      id: 1,
+      name: 'Dr. Sarah Mitchell',
+      specialty: 'Cardiology',
+      experience: '15 years',
+      education: 'Harvard Medical School',
+      bio: 'Dr. Mitchell is a board-certified cardiologist with extensive experience in preventive cardiology and heart disease management.',
+      initials: 'SM',
+      color: 'from-red-500 to-pink-500'
+    },
+    {
+      id: 2,
+      name: 'Dr. James Chen',
+      specialty: 'Pediatrics',
+      experience: '12 years',
+      education: 'Johns Hopkins University',
+      bio: 'Dr. Chen specializes in pediatric care and has a gentle approach that makes children feel comfortable and safe.',
+      initials: 'JC',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 3,
+      name: 'Dr. Emily Rodriguez',
+      specialty: 'Dermatology',
+      experience: '10 years',
+      education: 'Stanford Medical School',
+      bio: 'Dr. Rodriguez is an expert in medical and cosmetic dermatology, helping patients achieve healthy, radiant skin.',
+      initials: 'ER',
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      id: 4,
+      name: 'Dr. Michael Thompson',
+      specialty: 'Orthopedics',
+      experience: '18 years',
+      education: 'Yale School of Medicine',
+      bio: 'Dr. Thompson specializes in sports medicine and joint replacement surgery with a focus on minimally invasive techniques.',
+      initials: 'MT',
+      color: 'from-purple-500 to-violet-500'
+    },
+    {
+      id: 5,
+      name: 'Dr. Lisa Patel',
+      specialty: 'Internal Medicine',
+      experience: '14 years',
+      education: 'Columbia Medical School',
+      bio: 'Dr. Patel provides comprehensive primary care with a holistic approach to wellness and disease prevention.',
+      initials: 'LP',
+      color: 'from-orange-500 to-amber-500'
+    },
+    {
+      id: 6,
+      name: 'Dr. Robert Kim',
+      specialty: 'Neurology',
+      experience: '16 years',
+      education: 'Duke University',
+      bio: 'Dr. Kim is a leading neurologist specializing in headache disorders, epilepsy, and neurodegenerative diseases.',
+      initials: 'RK',
+      color: 'from-indigo-500 to-blue-500'
+    }
+  ];
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth >= 1024) setCardsPerView(3);
+      else if (window.innerWidth >= 768) setCardsPerView(2);
+      else setCardsPerView(1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    if (!isEmbedded) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % Math.ceil(doctors.length / cardsPerView));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [cardsPerView, doctors.length, isEmbedded]);
+
+  const totalSlides = Math.ceil(doctors.length / cardsPerView);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const bookAppointment = (doctorName) => {
+    if (isEmbedded) {
+      alert(`To book an appointment with ${doctorName}, please visit the main HealthBridge website.`);
+    } else {
+      alert(`Booking appointment with ${doctorName}. This would redirect to the appointment form.`);
+    }
+  };
+
+  const containerClass = isEmbedded 
+    ? "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 flex items-center justify-center"
+    : "py-16 bg-gray-50 min-h-screen";
+
+  return (
+    <div className={containerClass}>
+      <div className="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 text-center">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <Heart className="w-12 h-12" fill="white" />
+            <div>
+              <h1 className="text-3xl font-bold">HealthBridge</h1>
+              <p className="text-blue-100 text-sm">Medical Center</p>
+            </div>
+          </div>
+          <h2 className="text-2xl font-semibold mb-2">Meet Our Exceptional Medical Team</h2>
+          <p className="text-blue-100 max-w-2xl mx-auto">
+            World-class physicians dedicated to your health and well-being
+          </p>
+        </div>
+
+        {/* Carousel */}
+        <div className="relative p-8">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out gap-6"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                width: `${(doctors.length * 100) / cardsPerView}%`
+              }}
+            >
+              {doctors.map((doctor) => (
+                <div 
+                  key={doctor.id} 
+                  className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-200"
+                  style={{ width: `${100 / doctors.length}%`, flexShrink: 0 }}
+                >
+                  <div className={`w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br ${doctor.color} flex items-center justify-center text-white text-2xl font-bold shadow-lg`}>
+                    {doctor.initials}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{doctor.name}</h3>
+                  <p className="text-blue-600 font-semibold mb-3">{doctor.specialty}</p>
+                  <p className="text-sm text-gray-500 mb-2">Experience: {doctor.experience}</p>
+                  <p className="text-sm text-gray-500 mb-4 italic">{doctor.education}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">{doctor.bio}</p>
+                  <button
+                    onClick={() => bookAppointment(doctor.name)}
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Book Appointment
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+          >
+            <ChevronLeft className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+          >
+            <ChevronRight className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
+          </button>
+        </div>
+
+        {/* Indicators */}
+        <div className="flex justify-center space-x-2 pb-8">
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                currentIndex === index
+                  ? 'bg-blue-600 scale-125'
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Footer for embedded version */}
+        {isEmbedded && (
+          <div className="bg-gray-50 px-8 py-6 text-center border-t">
+            <p className="text-gray-600 mb-3">
+              Interested in scheduling an appointment with one of our doctors?
+            </p>
+            <a
+              href="https://healthcarewebsite-zeta.vercel.app"
+              target="_parent"
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Visit HealthBridge Medical Center
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default DoctorsCarousel;
