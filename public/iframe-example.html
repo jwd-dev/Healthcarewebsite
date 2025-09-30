@@ -29,7 +29,7 @@
 
         .iframe-container {
             width: 100%;
-            height: 600px;
+            height: 700px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
@@ -77,15 +77,26 @@
             margin-top: 0;
             color: #1e40af;
         }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>HealthBridge Doctors Carousel - Iframe Embedding Example</h1>
+        <h1>HealthBridge Doctors Carousel - React/Vite Version <span class="badge">UPDATED</span></h1>
         
         <div class="iframe-container">
             <iframe 
-                src="./doctors-carousel.html" 
+                src="https://healthcarewebsite-zeta.vercel.app/doctors-carousel" 
                 class="doctors-iframe"
                 title="HealthBridge Doctors Carousel"
                 allowfullscreen>
@@ -93,12 +104,12 @@
         </div>
 
         <div class="code-example">
-            <h3>How to Embed This Carousel</h3>
+            <h3>✨ How to Embed This Carousel (React Version)</h3>
             <p>Copy and paste this iframe code into any website:</p>
             <code>&lt;iframe 
-    src="https://yoursite.com/doctors-carousel.html" 
+    src="https://healthcarewebsite-zeta.vercel.app/doctors-carousel" 
     width="100%" 
-    height="600"
+    height="700"
     frameborder="0"
     title="HealthBridge Doctors Carousel"
     allowfullscreen&gt;
@@ -106,24 +117,31 @@
         </div>
 
         <div class="responsive-info">
-            <h4>📱 Responsive Design Features:</h4>
+            <h4>🚀 React/Vite Version Features:</h4>
             <ul>
-                <li><strong>Desktop (1024px+):</strong> Shows 3 doctor cards at once</li>
-                <li><strong>Tablet (768px-1023px):</strong> Shows 2 doctor cards at once</li>
-                <li><strong>Mobile (below 768px):</strong> Shows 1 doctor card at once</li>
-                <li><strong>Touch Support:</strong> Swipe left/right on mobile devices</li>
-                <li><strong>Keyboard Navigation:</strong> Use arrow keys to navigate</li>
-                <li><strong>Auto-advance:</strong> Automatically advances every 5 seconds</li>
+                <li><strong>✅ Works with Vite:</strong> Properly integrated with your React/Vite setup</li>
+                <li><strong>🎨 Enhanced Design:</strong> Beautiful gradients and improved animations</li>
+                <li><strong>📱 Fully Responsive:</strong> Adapts perfectly to all screen sizes</li>
+                <li><strong>🔄 Auto-advance:</strong> Automatically cycles through doctors every 5 seconds</li>
+                <li><strong>🎯 Touch Support:</strong> Swipe gestures on mobile devices</li>
+                <li><strong>⚡ Fast Loading:</strong> Optimized with Vite's build system</li>
+                <li><strong>🔗 SEO Friendly:</strong> Proper routing and meta tags</li>
             </ul>
         </div>
 
         <div class="code-example">
-            <h3>Advanced Iframe Options</h3>
-            <p>For better integration, you can customize the iframe:</p>
-            <code>&lt;!-- Responsive iframe --&gt;
-&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 50%;"&gt;
+            <h3>🌐 URL Access</h3>
+            <p>The carousel can be accessed directly at:</p>
+            <code>https://healthcarewebsite-zeta.vercel.app/doctors-carousel</code>
+        </div>
+
+        <div class="code-example">
+            <h3>📐 Responsive Iframe Options</h3>
+            <p>For better responsive integration:</p>
+            <code>&lt;!-- Responsive iframe that maintains aspect ratio --&gt;
+&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 60%;"&gt;
     &lt;iframe 
-        src="https://yoursite.com/doctors-carousel.html"
+        src="https://healthcarewebsite-zeta.vercel.app/doctors-carousel"
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
         frameborder="0"
         title="HealthBridge Doctors Carousel"
@@ -131,25 +149,27 @@
     &lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;!-- Fixed height iframe --&gt;
+&lt;!-- Styled iframe with shadow --&gt;
 &lt;iframe 
-    src="https://yoursite.com/doctors-carousel.html"
+    src="https://healthcarewebsite-zeta.vercel.app/doctors-carousel"
     width="100%"
-    height="600"
-    style="border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"
+    height="700"
+    style="border: none; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"
     title="HealthBridge Doctors Carousel"
     allowfullscreen&gt;
 &lt;/iframe&gt;</code>
         </div>
 
         <div class="responsive-info">
-            <h4>🚀 Hosting Instructions:</h4>
+            <h4>📋 Implementation Checklist:</h4>
             <ol>
-                <li>Upload <code>doctors-carousel.html</code> to your web server</li>
-                <li>Make sure the file is accessible via HTTP/HTTPS</li>
-                <li>Update the iframe <code>src</code> attribute with the full URL</li>
-                <li>Test the iframe on different devices and screen sizes</li>
-                <li>Consider adding HTTPS headers for security if embedding on external sites</li>
+                <li>✅ React component created with proper routing</li>
+                <li>✅ Vite configuration updated for deployment</li>
+                <li>✅ Vercel configuration added for URL routing</li>
+                <li>✅ Responsive design with mobile-first approach</li>
+                <li>✅ Auto-advance and manual navigation</li>
+                <li>✅ Embedded mode with external link back to main site</li>
+                <li>🔄 Deploy to Vercel (deploy the latest changes)</li>
             </ol>
         </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 
-const DoctorsCarousel = ({ isEmbedded = false }) => {
+const DoctorsCarousel = ({ isEmbedded = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
 
@@ -112,27 +112,11 @@ const DoctorsCarousel = ({ isEmbedded = false }) => {
     }
   };
 
-  const containerClass = isEmbedded 
-    ? "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 flex items-center justify-center"
-    : "py-16 bg-gray-50 min-h-screen";
+  const containerClass = "py-16 bg-gray-50 min-h-screen"
 
   return (
     <div className={containerClass}>
-      <div className="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 text-center">
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <Heart className="w-12 h-12" fill="white" />
-            <div>
-              <h1 className="text-3xl font-bold">HealthBridge</h1>
-              <p className="text-blue-100 text-sm">Medical Center</p>
-            </div>
-          </div>
-          <h2 className="text-2xl font-semibold mb-2">Meet Our Exceptional Medical Team</h2>
-          <p className="text-blue-100 max-w-2xl mx-auto">
-            World-class physicians dedicated to your health and well-being
-          </p>
-        </div>
+      <div className="max-w-3xl w-full  rounded-3xl shadow-2xl overflow-hidden">
 
         {/* Carousel */}
         <div className="relative p-8">
@@ -157,7 +141,6 @@ const DoctorsCarousel = ({ isEmbedded = false }) => {
                   <p className="text-blue-600 font-semibold mb-3">{doctor.specialty}</p>
                   <p className="text-sm text-gray-500 mb-2">Experience: {doctor.experience}</p>
                   <p className="text-sm text-gray-500 mb-4 italic">{doctor.education}</p>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-6">{doctor.bio}</p>
                   <button
                     onClick={() => bookAppointment(doctor.name)}
                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
@@ -184,36 +167,6 @@ const DoctorsCarousel = ({ isEmbedded = false }) => {
           </button>
         </div>
 
-        {/* Indicators */}
-        <div className="flex justify-center space-x-2 pb-8">
-          {Array.from({ length: totalSlides }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentIndex === index
-                  ? 'bg-blue-600 scale-125'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Footer for embedded version */}
-        {isEmbedded && (
-          <div className="bg-gray-50 px-8 py-6 text-center border-t">
-            <p className="text-gray-600 mb-3">
-              Interested in scheduling an appointment with one of our doctors?
-            </p>
-            <a
-              href="https://healthcarewebsite-zeta.vercel.app"
-              target="_parent"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Visit HealthBridge Medical Center
-            </a>
-          </div>
-        )}
       </div>
     </div>
   );
