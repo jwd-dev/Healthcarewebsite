@@ -35,50 +35,9 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
       bio: 'Dr. Rodriguez is an expert in medical and cosmetic dermatology, helping patients achieve healthy, radiant skin.',
       initials: 'ER',
       color: 'from-green-500 to-emerald-500'
-    },
-    {
-      id: 4,
-      name: 'Dr. Michael Thompson',
-      specialty: 'Orthopedics',
-      experience: '18 years',
-      education: 'Yale School of Medicine',
-      bio: 'Dr. Thompson specializes in sports medicine and joint replacement surgery with a focus on minimally invasive techniques.',
-      initials: 'MT',
-      color: 'from-purple-500 to-violet-500'
-    },
-    {
-      id: 5,
-      name: 'Dr. Lisa Patel',
-      specialty: 'Internal Medicine',
-      experience: '14 years',
-      education: 'Columbia Medical School',
-      bio: 'Dr. Patel provides comprehensive primary care with a holistic approach to wellness and disease prevention.',
-      initials: 'LP',
-      color: 'from-orange-500 to-amber-500'
-    },
-    {
-      id: 6,
-      name: 'Dr. Robert Kim',
-      specialty: 'Neurology',
-      experience: '16 years',
-      education: 'Duke University',
-      bio: 'Dr. Kim is a leading neurologist specializing in headache disorders, epilepsy, and neurodegenerative diseases.',
-      initials: 'RK',
-      color: 'from-indigo-500 to-blue-500'
     }
   ];
 
-  useEffect(() => {
-    const updateCardsPerView = () => {
-      if (window.innerWidth >= 1024) setCardsPerView(3);
-      else if (window.innerWidth >= 768) setCardsPerView(2);
-      else setCardsPerView(1);
-    };
-
-    updateCardsPerView();
-    window.addEventListener('resize', updateCardsPerView);
-    return () => window.removeEventListener('resize', updateCardsPerView);
-  }, []);
 
   useEffect(() => {
     if (!isEmbedded) return;
@@ -91,18 +50,6 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
   }, [cardsPerView, doctors.length, isEmbedded]);
 
   const totalSlides = Math.ceil(doctors.length / cardsPerView);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
 
   const bookAppointment = (doctorName) => {
     if (isEmbedded) {
@@ -122,14 +69,7 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
         {/* Carousel */}
         <div className="relative p-8 flex-1 flex flex-col">
           <div className="overflow-hidden flex-1 flex flex-col">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out gap-6 h-full"
-              style={{
-                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                width: `${(doctors.length * 100) / cardsPerView}%`,
-                height: "100%",
-              }}
-            >
+  
               {doctors.map((doctor) => (
                 <div 
                   key={doctor.id} 
@@ -145,22 +85,9 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
                   <p className="text-sm text-gray-500 mb-4 italic">{doctor.education}</p>
                 </div>
               ))}
-            </div>
           </div>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-          >
-            <ChevronLeft className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-          >
-            <ChevronRight className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
-          </button>
+
         </div>
 
       </div>
