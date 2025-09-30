@@ -64,7 +64,7 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
 
   return (
     <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%", background: "transparent" }}>
-      <div className="w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
+      <div className=" overflow-hidden flex-1 flex flex-col" style={{ background: "transparent" }}>
 
         {/* Carousel */}
         <div className="relative p-8 flex-1 flex flex-col" style={{ background: "transparent" }}>
