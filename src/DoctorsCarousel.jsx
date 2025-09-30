@@ -113,7 +113,7 @@ const DoctorsCarousel = ({ isEmbedded = true }) => {
   };
 
   // Remove min-h-screen and use flex to scale to fit
-  const containerClass = "py-16 bg-gray-50 flex flex-col items-center justify-center h-full w-full"
+  const containerClass = "py-16  flex flex-col items-center justify-center h-full w-full"
 
   return (
     <div className={containerClass} style={{ minHeight: 0, height: "100%", width: "100%" }}>
